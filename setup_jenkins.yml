@@ -1,0 +1,16 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: Apply common configuration to all nodes
+  hosts: jenkins_host
+  remote_user: vagrant
+
+  roles:
+    - common
+
+- name: Install Jenkins
+  hosts: jenkins_host
+  remote_user: vagrant
+
+  roles:
+    - jenkins

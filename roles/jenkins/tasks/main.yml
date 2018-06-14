@@ -1,0 +1,32 @@
+---
+# Install guest additions.
+
+- name: Download jenkins repo to yum repos
+  get_url:
+    url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+  become: true
+
+- name: Import key for Jenkins repo
+  rpm_key:
+    state: present
+    key: http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+  become: true
+
+- name: Install jenkins using yum
+  yum:
+    name: jenkins
+    state: present
+  become: true
+
+- name: Start Jenkins on boot
+  service:
+    name: jenkins
+    enabled: yes
+  become: true
+
+- name: Start Jenkins server
+  service:
+    name: jenkins
+    state: started
+  become: true
