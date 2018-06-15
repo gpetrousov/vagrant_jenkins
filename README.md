@@ -1,2 +1,3 @@
 # Vagrant_jenkins
-Ansible playbooks used to provision Jenkins server
+
+Provisions a VirtualBox VM with Jenkins using Vagrant ans Ansible.
